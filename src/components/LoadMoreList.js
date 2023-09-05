@@ -31,15 +31,16 @@ const items = [
   "Item 29",
   "Item 30"
 ];
-const ITEMS_PER_PAGE = 5; // Number of items to load at a time
+const ITEMS_PER_PAGE = 10; // Change the number of items to load at a time
 
 const LoadMoreList = () => {
   const [visibleItems, setVisibleItems] = useState([]);
   const [startIndex, setStartIndex] = useState(0);
 
   useEffect(() => {
-    // Load initial items
-    loadItems(startIndex, ITEMS_PER_PAGE);
+    // Initial stage: Load 0 items
+    setVisibleItems([]);
+    setStartIndex(0);
   }, []);
 
   const loadItems = (start, count) => {
@@ -59,7 +60,7 @@ const LoadMoreList = () => {
   };
 
   const handleLoadMoreClick = () => {
-    // Load more items when the button is clicked
+    // Button click behavior
     loadItems(startIndex, ITEMS_PER_PAGE);
   };
 
