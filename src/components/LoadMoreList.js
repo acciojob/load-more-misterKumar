@@ -47,6 +47,12 @@ const LoadMoreList = () => {
     const newItems = items.slice(start, start + count);
     setVisibleItems((prevItems) => [...prevItems, ...newItems]);
     setStartIndex(start + count);
+
+    // Cleanup mechanism: Reset items after a certain wait time
+    setTimeout(() => {
+      setVisibleItems([]);
+      setStartIndex(0);
+    }, 4000); // Adjust the wait time as needed
   };
 
   const handleScroll = () => {
